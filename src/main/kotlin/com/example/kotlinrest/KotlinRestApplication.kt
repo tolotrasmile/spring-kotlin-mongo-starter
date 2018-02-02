@@ -11,14 +11,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 class KotlinRestApplication : CommandLineRunner {
 
     @Autowired
-    var repository: TodoRepository? = null
+    lateinit var repository: TodoRepository
 
     override fun run(vararg args: String?) {
 
-        repository?.save(Todo("Create Spring Boot Application with Kotlin", false))
-        repository?.save(Todo("Create MongoDB Spring wrapper and insert data", false))
+        repository.deleteAll()
+        repository.save(Todo("Create Spring Boot Application with Kotlin", false))
+        repository.save(Todo("Create MongoDB Spring wrapper and insert data", false))
 
-        val all = repository?.findAll()
+        val all = repository.findAll()
 
         all?.forEach {
             println(it.toString())
