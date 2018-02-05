@@ -3,11 +3,13 @@ package com.example.kotlinrest.controllers
 import com.example.kotlinrest.model.Todo
 import com.example.kotlinrest.repository.TodoRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@CrossOrigin("*")
 class MainController {
 
     @Autowired

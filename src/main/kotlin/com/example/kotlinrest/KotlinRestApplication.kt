@@ -18,12 +18,7 @@ class KotlinRestApplication : CommandLineRunner {
         repository.deleteAll()
         repository.save(Todo("Create Spring Boot Application with Kotlin", false))
         repository.save(Todo("Create MongoDB Spring wrapper and insert data", false))
-
-        val all = repository.findAll()
-
-        all?.forEach {
-            println(it.toString())
-        }
+        repository.findAll()?.forEach(::println)
 
     }
 }
