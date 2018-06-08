@@ -1,26 +1,19 @@
 package com.example.kotlinrest.controllers
 
+import com.example.kotlinrest.common.RestController
 import com.example.kotlinrest.model.Todo
 import com.example.kotlinrest.repository.TodoRepository
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ResponseBody
-import org.springframework.web.bind.annotation.RestController
 
-@RestController
-@CrossOrigin("*")
-class MainController {
+class MainController(var repository: TodoRepository) : RestController() {
 
-    @Autowired
-    lateinit var repository: TodoRepository
+  @GetMapping("/")
+  @ResponseBody
+  fun index(): String = "Hello World"
 
-    @GetMapping("/")
-    @ResponseBody
-    fun index(): String = "Hello World"
-
-    @GetMapping("/todos")
-    @ResponseBody
-    fun todo(): MutableList<Todo>? = repository.findAll()
+  @GetMapping("/todos")
+  @ResponseBody
+  fun todo(): MutableList<Todo>? = repository.findAll()
 
 }

@@ -1,19 +1,17 @@
 package com.example.kotlinrest.controllers
 
+import com.example.kotlinrest.common.RestController
 import com.example.kotlinrest.model.Product
 import com.example.kotlinrest.repository.ProductRepository
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.ResponseBody
 
-@RestController
-@CrossOrigin("*")
 @RequestMapping("/products")
-class ProductsController {
+class ProductsController(var repository: ProductRepository) : RestController() {
 
-    @Autowired
-    lateinit var repository: ProductRepository
+  @GetMapping("/")
+  @ResponseBody
+  fun todo(): MutableList<Product>? = repository.findAll()
 
-    @GetMapping("/")
-    @ResponseBody
-    fun todo(): MutableList<Product>? = repository.findAll()
 }

@@ -7,11 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
 class KotlinRestApplication(var task: InsertionTask) : CommandLineRunner {
-    override fun run(vararg args: String?) {
-        task.insert()
-    }
+  override fun run(vararg args: String?) {
+    task.insert()
+  }
 }
 
 fun main(args: Array<String>) {
-    SpringApplication.run(KotlinRestApplication::class.java, *args)
+  SpringApplication.run(KotlinRestApplication::class.java, *args)
 }
